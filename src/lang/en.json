@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "home": {
+      "title": "Appointment Booking - A easy way to go.",
+      "description": "Our services are easy and simple. Don't worry, we care about anything."
+    }
+  },
+  "navigation": {
+    "marketing": [{ "title": "Features", "href": "#features" }],
+    "dashboard": [
+      {
+        "title": "Appointments",
+        "href": "/dashboard/appointments",
+        "icon": "appointments"
+      },
+      {
+        "title": "Employees",
+        "href": "/dashboard/employees",
+        "icon": "sellers",
+        "role": "admin"
+      },
+      {
+        "title": "Opening Time",
+        "href": "/dashboard/opening-time",
+        "icon": "openingTime",
+        "role": "admin"
+      }
+    ]
+  },
+  "page": {
+    "marketing": {
+      "headline": "Simple Booking System",
+      "description": "Using Next.js 14, Shadcn, MongoDb, Design Patterns and Best Practices.",
+      "sections": {
+        "bullet": {
+          "one": "+ Landing Page",
+          "two": "+ Booking Process",
+          "three": "+ Admin Dashboard"
+        }
+      }
+    },
+    "home": {
+      "headline": "Simple Booking System",
+      "description": "Using Next.js 14, Shadcn, MongoDb, Design Patterns, Best Practices and more..",
+      "sections": {
+        "openingHours": {
+          "headline": "Open Hours",
+          "description": "You can book our services"
+        },
+        "about": {
+          "headline": "About",
+          "description": "We are a crazy team for booking appointments with us. We love it."
+        }
+      }
+    },
+    "dashboard": {
+      "appointments": {
+        "headline": "Appointments",
+        "description": "Manage your appointments"
+      },
+      "employees": {
+        "headline": "Employees",
+        "description": "Manage your sellers"
+      },
+      "openingHours": {
+        "headline": "Opening Hours",
+        "description": "Manage your opening hours",
+        "sections": {
+          "open": {
+            "headline": "Open"
+          },
+          "closed": {
+            "headline": "Closed"
+          }
+        }
+      }
+    },
+    "editor": {
+      "bookNow": {
+        "headline": "Update Appointment",
+        "description": "Customer:",
+        "sections": {
+          "date": {
+            "headline": "Select Your date."
+          },
+          "timeSlot": {
+            "headline": "Select Your time slot"
+          }
+        }
+      }
+    },
+    "bookNow": {
+      "headline": "Book Now!",
+      "description": "All day and night!",
+      "sections": {
+        "details": {
+          "headline": "Appointment booked!",
+          "description": "Booking details:"
+        },
+        "clientName": {
+          "headline": "Client Name"
+        },
+        "clientEmail": {
+          "headline": "Client Email"
+        },
+        "date": {
+          "headline": "Appointment date."
+        },
+        "timeSlot": {
+          "headline": "Time"
+        }
+      }
+    },
+    "login": {
+      "headline": "Log in to book an appointment",
+      "description": "Select your Provider"
+    }
+  },
+  "button": {
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "logout": "Logout",
+    "bookNow": "Book Now",
+    "menu": "Menu",
+    "back": "Back",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "reset": "Reset",
+    "add": "Add",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "error": {
+    "form": {
+      "date": {
+        "description": "An appointment date is required"
+      },
+      "timeSlot": {
+        "description": "An appointment time is required"
+      },
+      "clientName": {
+        "description": "Client is required"
+      },
+      "seller": {
+        "description": "Seller is required"
+      }
+    }
+  }
+}
