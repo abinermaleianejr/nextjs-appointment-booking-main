@@ -7,7 +7,7 @@ import type {
 } from "@/src/components/ui/toast"
 
 const TOAST_LIMIT = 1
-const TOAST_REMOVE_DELAY = 1000000
+const TOAST_REMOVE_DELAY = 5000
 
 type ToasterToast = ToastProps & {
   id: string
@@ -15,7 +15,7 @@ type ToasterToast = ToastProps & {
   description?: React.ReactNode
   action?: ToastActionElement
 }
-
+ 
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
   UPDATE_TOAST: "UPDATE_TOAST",
@@ -70,6 +70,12 @@ const addToRemoveQueue = (toastId: string) => {
   }, TOAST_REMOVE_DELAY)
 
   toastTimeouts.set(toastId, timeout)
+
+  // Retorna uma função para cancelar este timeout específico
+  return () => {
+    clearTimeout(timeout)
+    toastTimeouts.delete(toastId)
+  }
 }
 
 export const reducer = (state: State, action: Action): State => {
@@ -189,4 +195,36 @@ function useToast() {
   }
 }
 
+
+// ... seu código anterior ...
+
+// ------------------------------------------------------------------------
+// SOLUÇÃO CRÍTICA: Limpeza para Hot Module Replacement (HMR)
+// ------------------------------------------------------------------------
+// @ts-ignore - O TypeScript não conhece `module.hot` por padrão
+if (import.meta.webpackHot || (typeof module !== 'undefined' && module.hot)) {
+  // @ts-ignore
+  const hotModule = import.meta.webpackHot || module.hot;
+  
+  hotModule.addDisposeHandler(() => {
+    // Esta função é executada ANTES do módulo ser descartado e recarregado.
+    // É a nossa chance de limpar os recursos que causariam memory leaks ou erros.
+    console.log('🧹 Cleaning up toast timeouts for HMR...');
+
+    // Cancela TODOS os timeouts pendentes
+    toastTimeouts.forEach((timeout, id) => {
+      clearTimeout(timeout);
+    });
+    toastTimeouts.clear(); // Esvazia o Map
+
+    // Opcional: Reseta o estado na memória e os listeners
+    // Isso é agressivo, mas garante um fresh start
+    memoryState = { toasts: [] };
+    listeners.length = 0;
+    count = 0;
+  });
+}
+// ------------------------------------------------------------------------
+
 export { useToast, toast }
+

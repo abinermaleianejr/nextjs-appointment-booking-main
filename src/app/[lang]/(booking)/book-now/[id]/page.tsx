@@ -13,10 +13,15 @@ export default async function BookNowDetailsPage({
 }: {
   params: { lang: Locale; id: string };
 }) {
+  let appointment;
   const { page, button } = await getDictionary(lang);
-
-  const appointment = await readAppointmentById(id);
-
+  try {
+    appointment = await readAppointmentById(id);
+  } catch (error) {
+    console.error("Failed to fetch appointment:", error);
+    // Em caso de erro na query, também retorne 404
+    notFound();
+  }
   if (!appointment) {
     notFound();
   }
